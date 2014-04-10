@@ -68,10 +68,10 @@ class GroupsController < ApplicationController
 
       respond_to do |format|
         if @membership.save
-          format.html { redirect_to(@group, :notice => 'You have joined this networking group.') }
+          format.html { redirect_to(@group, :notice => 'You have joined a networking group.') }
           format.xml  { head :ok }
         else
-          format.html { redirect_to(@group, :notice => 'You have already joined this group') }
+          format.html { redirect_to(@group, :notice => 'You have already joined a networking group') }
           format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
         end
       end

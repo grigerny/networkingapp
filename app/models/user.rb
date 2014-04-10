@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :memberships, :dependent => :destroy
   has_many :groups, :through => :memberships
   
+
         
  attr_accessible :email, :password
   

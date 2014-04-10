@@ -1,12 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<%= @group.name %><br><br>
+<%= @group.name %> (<%= @group.users.count %>/12)	<br><br>
 Members:<br>
-<% @group.memberships.each do |membership| %>
-<%= membership.user.email %>
-<% end %>
 
-	<%= link_to "Join", join_group_path(@group) %> 
-	<%= link_to "Leave", unjoin_group_path(@group) %>	
+<% @group.memberships.each do |membership| %>
+<%= membership.user.email %><br>
+<% end %>
+<br>
+
+<% if @group.users.count < 13 %>
+<%= link_to "Join Group", join_group_path(@group) %><br>
+<% end %>
+<%= link_to "Leave Group", unjoin_group_path(@group) %>
+	
 
 
