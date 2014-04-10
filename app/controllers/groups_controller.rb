@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @user = current_user
   end
 
   # GET /groups/new
@@ -60,6 +61,29 @@ class GroupsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def join
+      @group = Group.find(params[:id])
+      @membership = @group.memberships.build(:user_id => current_user.id)
+
+      respond_to do |format|
+        if @membership.save
+          format.html { redirect_to(@group, :notice => 'You have joined this networking group.') }
+          format.xml  { head :ok }
+        else
+          format.html { redirect_to(@group, :notice => 'You have already joined this group') }
+          format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
+        end
+      end
+    end
+
+  def unjoin  
+    @group = Group.find(params[:id])
+    @membership = @group.memberships.find_by_user_id(current_user.id)
+    @membership.destroy rescue nil
+    redirect_to(@group, :notice => 'You have left this networking group.')
+  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -71,4 +95,6 @@ class GroupsController < ApplicationController
     def group_params
       params[:group]
     end
+    
+    
 end

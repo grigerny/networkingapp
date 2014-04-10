@@ -6,3 +6,7 @@ Members:<br>
 <%= membership.user.email %>
 <% end %>
 
+	<%= link_to "Join", join_group_path(@group) %> 
+	<%= link_to "Leave", unjoin_group_path(@group) %>	
+
+
