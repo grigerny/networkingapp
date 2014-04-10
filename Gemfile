@@ -46,3 +46,4 @@ end
 
 gem 'devise'
 gem "twitter-bootstrap-rails"
+gem 'protected_attributes'

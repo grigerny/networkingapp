@@ -11,6 +11,7 @@
 
   <tbody>
     <% @groups.each do |group| %>
+		<%= group.name %>
       <tr>
         <td><%= link_to 'Show', group %></td>
         <td><%= link_to 'Edit', edit_group_path(group) %></td>
