@@ -1,7 +1,8 @@
 Networkingapp::Application.routes.draw do
   resources :memberships
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
+  resources :after_signup
   
   resources :groups do 
       get 'join', 'unjoin', :on => :member 

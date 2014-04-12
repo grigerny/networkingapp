@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /groups
   # GET /groups.json
@@ -77,7 +78,7 @@ class GroupsController < ApplicationController
       end
     end
 
-  def unjoin  
+  def unjoin 
     @group = Group.find(params[:id])
     @membership = @group.memberships.find_by_user_id(current_user.id)
     @membership.destroy rescue nil
