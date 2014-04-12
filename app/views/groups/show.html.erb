@@ -5,9 +5,13 @@ Members:<br>
 
 <% @group.memberships.each do |membership| %>
 <%= membership.user.email %><br>
+<% if membership.user.email == current_user.email %>
+<%= link_to "Enter Group", group_page_path %>
+<% end %>
 <% end %>
 <br>
 
+<br><br>
 <% if @group.users.count < 13 %>
 <%= link_to "Join Group", join_group_path(@group) %><br>
 <% end %>

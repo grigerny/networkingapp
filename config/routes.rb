@@ -1,4 +1,6 @@
 Networkingapp::Application.routes.draw do
+  resources :group_pages
+
   resources :memberships
 
   devise_for :users, :controllers => { :registrations => "registrations" }

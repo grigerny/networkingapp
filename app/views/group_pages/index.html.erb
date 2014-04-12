@@ -1,0 +1,26 @@
+<h1>Listing group_pages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @group_pages.each do |group_page| %>
+
+      <tr>
+        <td><%= link_to 'Show', group_page %></td>
+        <td><%= link_to 'Edit', edit_group_page_path(group_page) %></td>
+        <td><%= link_to 'Destroy', group_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Group page', new_group_page_path %>
