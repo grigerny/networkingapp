@@ -1,8 +1,23 @@
 <%= form_for @user, url: wizard_path do |f| %>
-  <h2>Tell us a little about yourself</h2>
+  <h2>Your Professional Profile</h2>
 
-  Company:<br>
-  <%= f.text_field :company %>
+	First Name:<br>
+	<%= f.text_field :first_name %><br>
+	
+	Last Name:<br>
+	<%= f.text_field :last_name %><br>
 
+  	Company:<br>
+  	<%= f.text_field :company %><br>
+
+	Title:<br>
+	<%= f.text_field :title %><br>
+
+	Industry:<br>
+	<%= f.select :industry, [['Advertising' ,1], ['Automotive' ,2], ['Business Services' ,3], ['Consulting Services' ,4], ['Construction' ,5], ['Education' ,6], ['Entertainment' ,7], ['Entrepreneur' ,8], ['Financial Services' , 9], ['Food & Beverages' , 10], ['Government' ,11], ['Healthcare' ,12], ['Information Technology' ,13], ['Insurance' ,14],['Law' ,15],['Marketing' ,16], ['Non-Profit' , 17],['Retail & Consumer Goods' ,18],['Real Estate' ,19],['Telecommunications' ,20],['Other/Not Listed', 21]] %><br>
+	
+	Phone Number:<br>
+	<%= f.text_field :phone %><br>
+	
 <%= f.submit "Submit" %>
 <% end %>
