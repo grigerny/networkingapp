@@ -4,7 +4,6 @@ class Group < ActiveRecord::Base
   has_one :group_page
   
   attr_accessible :name, :user_id
-  
-  
+  validates_uniqueness_of :industry
   
 end

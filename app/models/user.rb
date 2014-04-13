@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :memberships, :dependent => :destroy
   has_many :groups, :through => :memberships
   
+  validates_presence_of :first_name, :last_name, :company, :title, :industry, :phone
 
         
  attr_accessible :email, :password, :company, :industry, :first_name, :last_name, :title, :phone, :address1, :address2, :city, :state, :zip

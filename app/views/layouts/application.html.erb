@@ -8,6 +8,17 @@
 <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 </head>
 <body>
+	
+	<div class="row-fluid">
+		<div class="span12">
+			<div id="navbar">
+				<div class="logo">
+				<%= link_to "Networking App", root_path %>	
+				</div>
+			</div>	
+		</div>
+	</div>
+	
 
 	<% if user_signed_in? %>
 	  Logged in as <strong><%= current_user.email %></strong>.

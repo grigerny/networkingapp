@@ -2,6 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#navbar{
+	height:60px;
+	background:#F1F1F1;
+}
+
+.logo{
+	padding:20px;
+	font-family: 'Raleway', sans-serif;
+	font-size:36px;
+	text-decoration:none;
+	outline: none;
+    box-shadow:none !important;
+}
+
+.logo:hover{
+	padding:20px;
+	font-family: 'Raleway', sans-serif;
+	font-size:36px;
+	text-decoration:none;
+	outline: none;
+    box-shadow:none !important;
+}
+
 #home-title{
 	margin-top:60px;
 	text-align:center;
