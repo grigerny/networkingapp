@@ -1,3 +1,77 @@
 // Place all the styles related to the Groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#group-show-title{
+	margin:40px;
+	text-align:center;
+	font-family: 'Raleway', sans-serif;
+	font-size:64px;
+}
+
+#group-hello-member{
+	padding:20px;
+	font-family: 'Raleway', sans-serif;
+	font-size:28px;
+}
+
+#group-users-count{
+	padding:20px;
+	font-family: 'Raleway', sans-serif;
+	font-size:28px;
+}
+
+#group-summary-heading{
+	padding:20px;
+	font-family: 'Raleway', sans-serif;
+	font-size:28px;
+}
+
+#group-industries-list{
+	padding:20px;
+	font-family: 'Raleway', sans-serif;
+	font-size:18px;
+}
+
+#group-industries-list-item{
+	margin:10px;
+	background-color:#059BC2;
+	color:white;
+	float:left;
+	padding:20px;
+	font-family: 'Raleway', sans-serif;
+	font-size:18px;
+}
+
+#group-industry-may_join{
+	padding:20px;
+	font-family: 'Raleway', sans-serif;
+	font-size:28px;
+	line-height:40px;
+}
+
+#group-industry-may_not_join{
+	padding:20px;
+	font-family: 'Raleway', sans-serif;
+	font-size:28px;
+	line-height:40px;
+}
+
+#group-enter-button{
+	padding:20px;
+}
+
+.group-enter-button-css{
+	margin:10px;
+	background-color:#69BD58;
+	color:white;
+	float:left;
+	padding:20px;
+	font-family: 'Raleway', sans-serif;
+	font-size:18px;
+	text-decoration:none !important ;
+	outline: none;
+	-moz-box-shadow: 0 0 5px #888;
+	-webkit-box-shadow: 0 0 5px#888;
+	box-shadow: 0 0 5px #888;
+}

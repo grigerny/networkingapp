@@ -1,18 +1,83 @@
 <p id="notice"><%= notice %></p>
 
-<%= @group.name %> (<%= @group.users.count %>/12)	<br><br>
-Members:<br>
+<div class="row-fluid">
+	<div class="span12">
+		<div id="group-show-title">	
+			<%= @group.name %>
+		</div>	
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span12">
+		<div id="group-hello-member">	
+		 Welcome <%= current_user.first_name %>
+		</div>	
+	</div>
+</div>
 
-<% @group.memberships.each do |membership| %>
-<%= membership.user.email %><br>
+<div class="row-fluid">
+	<div class="span12">
+		<div id="group-users-count">	
+		 This group has <%= pluralize("#{@group.users.count}", 'member') %>
+		</div>	
+	</div>
+</div>
 
-<% if membership.user.email == current_user.email %>
-<%= link_to "Enter Group", group_page_path(@group.group_page.id) %>
+<div class="row-fluid">
+	<div class="span12">
+		<div id="group-summary-heading">
+			The following industries are represented in this group:
+		</div>	
+	</div>
+</div>
+
+<div class="row-fluid">
+	<div class="span12">
+		<div id="group-industries-list">	
+			<% @group.memberships.each do |membership| %>
+			<div id="group-industries-list-item">	
+			<%= membership.user.industry %>
+			</div>
+			<% end %>
+		</div>	
+	</div>
+</div>
+
+<% unless %>
+<% @group.users.where(:industry => "#{current_user.industry}").exists? %>
+<div class="row-fluid">
+	<div class="span12">
+		<div id="group-industry-may_join">
+			You may join this group, because no one is in the <%= current_user.industry %> industry.
+		</div>	
+	</div>
+</div>	
+<% else %>
+<div class="row-fluid">
+	<div class="span12">
+		<div id="group-industry-may_not_join">
+			<%= current_user.industry %> is being represented in this group. 
+		</div>	
+	</div>
+</div>	
 <% end %>
-<% end %>
-<br>
 
-<br><br>
+<div class="row-fluid">
+	<div class="span12">
+		<div id="group-enter-button">
+			<% if %>
+			<% @group.users.where(:email => "#{current_user.email}").exists? %>
+			<%= link_to group_page_path(@group.group_page.id), :class => "group-enter-button-css" do %>
+			<%= "Enter Group" %>
+			<% end %>
+			<% end %>	
+		</div>	
+	</div>
+</div>
+
+
+
+
 <% if @group.users.count < 13 %>
 <%= link_to "Join Group", join_group_path(@group) %><br>
 <% end %>

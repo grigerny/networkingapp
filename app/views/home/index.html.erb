@@ -9,13 +9,14 @@
 
 <div class="row-fluid">
 	<div class="span12">
-		<div id="home-networking_group-buttons">
-<% @groups.each do |group| %>	
-			<%= link_to group_path(group), :class => "home-networking_group-buttons-css" do %>
-			<%= group.name %>
-			<% end %>
-		</div>	
-	</div>
+		<% @groups.each do |group| %>
+			<div id="home-networking_group-buttons">
+				<%= link_to group_path(group), :class => "home-networking_group-buttons-css" do %>
+				<%= group.name %>
+			</div>	
+				<% end %>
+			
+	</div>	
 </div>
 
 <% end %>
