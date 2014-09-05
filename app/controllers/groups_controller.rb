@@ -50,7 +50,7 @@ class GroupsController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: city_group_path.errors, status: :unprocessable_entity }
+        format.json { render json: city_group_path(@city, @group).errors, status: :unprocessable_entity }
       end
     end
   end
