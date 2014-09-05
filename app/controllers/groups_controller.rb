@@ -1,6 +1,5 @@
-class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+class GroupController < ApplicationController
+  before_action :set_group_page, only: [:show, :edit, :update, :destroy]
 
   # GET /groups
   # GET /groups.json
@@ -11,12 +10,11 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @user = current_user
   end
 
   # GET /groups/new
   def new
-    @group = Group.new
+    Group = Group.new
   end
 
   # GET /groups/1/edit
@@ -30,7 +28,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
+        format.html { redirect_to @group, notice: 'Group page was successfully created.' }
         format.json { render action: 'show', status: :created, location: @group }
       else
         format.html { render action: 'new' }
@@ -44,7 +42,7 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
+        format.html { redirect_to @group, notice: 'Group page was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -62,40 +60,15 @@ class GroupsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  def join
-      @group = Group.find(params[:id])
-      @membership = @group.memberships.build(:user_id => current_user.id)
-
-      respond_to do |format|
-        if @membership.save
-          format.html { redirect_to(@group, :notice => 'You have joined a networking group.') }
-          format.xml  { head :ok }
-        else
-          format.html { redirect_to(@group, :notice => 'You have already joined a networking group') }
-          format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
-        end
-      end
-    end
-
-  def unjoin 
-    @group = Group.find(params[:id])
-    @membership = @group.memberships.find_by_user_id(current_user.id)
-    @membership.destroy rescue nil
-    redirect_to(@group, :notice => 'You have left this networking group.')
-  end
-  
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_group
+    def set_group_page
       @group = Group.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params[:group]
+      params[:group_page]
     end
-    
-    
 end

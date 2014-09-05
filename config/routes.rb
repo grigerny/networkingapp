@@ -1,14 +1,13 @@
 Networkingapp::Application.routes.draw do
-  resources :group_pages
-
   resources :memberships
 
-  devise_for :users, :controllers => { :registrations => "registrations" }
+  devise_for :users
   resources :after_signup
   
-  resources :groups do 
+  resources :cities do resources :groups do 
       get 'join', 'unjoin', :on => :member 
     end
+  end
     
   get "home/index"
   # The priority is based upon order of creation: first created -> highest priority.

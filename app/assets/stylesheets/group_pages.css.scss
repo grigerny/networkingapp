@@ -1,3 +1,22 @@
 // Place all the styles related to the Group_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.businesscard{
+	border:1px solid #F1F1F1;
+	background:#F5F5F5;
+	color:black;
+	float:left;
+	padding:20px;
+	font-family: 'Arial';
+	font-size:12px;
+	width:200px;
+}
+
+.businesscard:hover{
+	background:#FDFBD1;
+}
+
+.background{
+	background:#028EC3;
+}

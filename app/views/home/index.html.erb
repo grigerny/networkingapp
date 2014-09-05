@@ -1,7 +1,7 @@
 <div class="row-fluid">
 	<div class="span12">
 		<div id="home-title">
-			Join a Networking Group	
+			Select Your City
 		</div>	
 	</div>
 </div>
@@ -9,10 +9,10 @@
 
 <div class="row-fluid">
 	<div class="span12">
-		<% @groups.each do |group| %>
+		<% @cities.each do |city| %>
 			<div id="home-networking_group-buttons">
-				<%= link_to group_path(group), :class => "home-networking_group-buttons-css" do %>
-				<%= group.name %>
+				<%= link_to city_path(city), :class => "home-networking_group-buttons-css" do %>
+				<%= city.name %>
 			</div>	
 				<% end %>
 			

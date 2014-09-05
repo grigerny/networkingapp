@@ -1,9 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="background">
 
-<% @group_page.group.users.each do |user| %>
-<%= user.email %><br>
-<% end %>
+<div class="row-fluid">
+	<div class="span12">
+		<div class="span4">
+			<% @group_page.group.users.each do |user| %>
+			<div class="businesscard">
+			<%= user.first_name %> <%= user.last_name %><br>
+			<%= user.company %><br>
+			<%= user.title %><br><br>
+			<%= user.email %><br>
+			<%= user.phone %>
+			</div>
+			<% end %>
+		</div>
+		
+		<div class="span8">
+			test
+			</div>
+	</div>
+</div>
 
-
-<%= link_to 'Edit', edit_group_page_path(@group_page) %> |
-<%= link_to 'Back', group_pages_path %>
+</div>

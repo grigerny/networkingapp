@@ -1,9 +1,19 @@
 class User < ActiveRecord::Base
   has_many :memberships, :dependent => :destroy
-  has_many :groups, :through => :memberships
+  has_many :cities, :through => :memberships
   
-  validates_presence_of :first_name, :last_name, :company, :title, :industry, :phone
-
+  validates :first_name, :presence => true, :if => :persisted?
+  
+  validates :last_name, :presence => true, :if => :persisted?
+   
+  validates :company, :presence => true, :if => :persisted?
+   
+  validates :title, :presence => true, :if => :persisted?
+   
+  validates :industry, :presence => true, :if => :persisted?
+     
+  validates :phone, :presence => true, :if => :persisted?
+  
         
  attr_accessible :email, :password, :company, :industry, :first_name, :last_name, :title, :phone, :address1, :address2, :city, :state, :zip
   

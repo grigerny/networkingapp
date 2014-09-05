@@ -11,21 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140412211953) do
+ActiveRecord::Schema.define(version: 20140905001300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "group_pages", force: true do |t|
+  create_table "cities", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "group_id"
+    t.string   "name"
   end
 
   create_table "groups", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
+    t.integer  "city_id"
   end
 
   create_table "memberships", force: true do |t|
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140412211953) do
     t.string   "state"
     t.string   "zip"
     t.string   "title"
+    t.string   "status"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
