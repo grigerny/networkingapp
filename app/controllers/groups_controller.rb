@@ -45,7 +45,6 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group = Group.find(params[:id])
          @group.update_attributes(params[:group])
-         @city = City.find(params[:id])
         format.html { redirect_to (@group), notice: 'Group page was successfully updated.' }
         format.json { head :no_content }
       else
