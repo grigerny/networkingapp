@@ -1,5 +1,4 @@
-class GroupController < ApplicationController
-  before_action :set_group_page, only: [:show, :edit, :update, :destroy]
+class GroupsController < ApplicationController
 
   # GET /groups
   # GET /groups.json
@@ -10,6 +9,8 @@ class GroupController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @group = Group.find(params[:id])
+    @user = current_user
   end
 
   # GET /groups/new
@@ -63,7 +64,7 @@ class GroupController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_group_page
+    def set_group
       @group = Group.find(params[:id])
     end
 
@@ -71,4 +72,39 @@ class GroupController < ApplicationController
     def group_params
       params[:group_page]
     end
+    
+    def join
+         @group = Group.find(params[:id])
+         @membership = @group.memberships.build(:user_id => current_user.id)
+
+         respond_to do |format|
+           if @membership.save
+             format.html { redirect_to(@group, :notice => 'You have joined a networking group.') }
+             format.xml  { head :ok }
+           else
+             format.html { redirect_to(@group, :notice => 'You have already joined a networking group') }
+             format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
+           end
+         end
+       end
+
+     def unjoin 
+       @group = Group.find(params[:id])
+       @membership = @group.memberships.find_by_user_id(current_user.id)
+       @membership.destroy rescue nil
+       redirect_to(@group, :notice => 'You have left this networking group.')
+     end
+
+
+     private
+       # Use callbacks to share common setup or constraints between actions.
+       def set_city
+         @group = Group.find(params[:id])
+       end
+
+       # Never trust parameters from the scary internet, only allow the white list through.
+       def city_params
+         params[:group]
+       end
+       
 end

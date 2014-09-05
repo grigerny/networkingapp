@@ -17,6 +17,15 @@
 	</div>
 </div>
 
+<div class="row-fluid">
+<div class="span12">
+List of Groups:<br>
+<% @city.groups.each do |group| %>
+<%= link_to group.name, city_group_path(@city, group.id) %>
+<% end %>
+</div>
+</div>
+
 
 
 

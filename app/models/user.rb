@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :memberships, :dependent => :destroy
-  has_many :cities, :through => :memberships
+  has_many :groups, :through => :memberships
   
   validates :first_name, :presence => true, :if => :persisted?
   

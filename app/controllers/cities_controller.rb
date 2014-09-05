@@ -1,5 +1,4 @@
 class CitiesController < ApplicationController
-  before_action :set_city, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
   def index
@@ -7,7 +6,7 @@ class CitiesController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @city = City.find(params[:id])
   end
 
   # GET /groups/new
@@ -52,39 +51,5 @@ class CitiesController < ApplicationController
     end
   end
   
-  def join
-      @city = City.find(params[:id])
-      @membership = @city.memberships.build(:user_id => current_user.id)
-
-      respond_to do |format|
-        if @membership.save
-          format.html { redirect_to(@city, :notice => 'You have joined a networking group.') }
-          format.xml  { head :ok }
-        else
-          format.html { redirect_to(@city, :notice => 'You have already joined a networking group') }
-          format.xml  { render :xml => @city.errors, :status => :unprocessable_entity }
-        end
-      end
-    end
-
-  def unjoin 
-    @city = City.find(params[:id])
-    @membership = @city.memberships.find_by_user_id(current_user.id)
-    @membership.destroy rescue nil
-    redirect_to(@city, :notice => 'You have left this networking group.')
-  end
-  
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_city
-      @city = City.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def city_params
-      params[:city]
-    end
-    
     
 end
