@@ -46,11 +46,11 @@ class GroupsController < ApplicationController
       if @group = Group.find(params[:id])
          @group.update_attributes(params[:group])
          @city = City.find(params[:id])
-        format.html { redirect_to city_group_path(@city, @group), notice: 'Group page was successfully updated.' }
+        format.html { redirect_to (@group), notice: 'Group page was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: city_group_path(@city, @group).errors, status: :unprocessable_entity }
+        format.json { render json: (@group).errors, status: :unprocessable_entity }
       end
     end
   end
