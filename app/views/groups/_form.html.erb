@@ -1,17 +1,29 @@
-<%= form_for(@group_page) do |f| %>
-  <% if @group_page.errors.any? %>
+<%= form_for @group do |f| %>
+  <% if @group.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@group_page.errors.count, "error") %> prohibited this group_page from being saved:</h2>
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
 
       <ul>
-      <% @group_page.errors.full_messages.each do |msg| %>
+      <% @group.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
+Name:
+<%= f.text_field :name %><br>
+
+Venue:
+<%= f.text_field :venue %><br>
+
+Address:
+<%= f.text_field :address %><br>
+
+When and how often does this group meet?:
+<%= f.text_field :time %><br>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save" %>
   </div>
 <% end %>

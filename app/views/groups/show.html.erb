@@ -1,18 +1,56 @@
 <div class="background">
+	
 <div class="row-fluid">
-	<div class="span12">
-		<div class="span4">
-			<% @group.memberships.each do |membership| %>
-			<div class="businesscard">
-			<%= membership.user.email %>
-			</div>
-			<% end %>
-		</div>
-		
-		<div class="span8">
-			test
-		</div>
-	</div>
+<div class="span12">
+<center><h1>
+<%= @group.name %>
+</center></h1>
+</div>
 </div>
 
 </div>
+<div class="container">
+		<%= flash[:notice] %>
+	<div class="row-fluid">
+	<div class="span12">
+		<b>Venue:</b> <%= @group.venue %><br>
+		<b>Address:</b> <%= @group.address%><br>
+		<b>Number of members:</b> <%= @group.memberships.count %><br>
+		<b>This group meets:</b> <%= @group.time %>
+	</div>
+	</div>
+
+
+	
+
+<div class="row-fluid">
+	<div class="span12">
+		<% if @group.memberships.count < 13 && unless @group.users.where(:email => "#{current_user.email}").exists? %>
+		<div id="group-join-button">
+			<%= link_to "Join Group", join_city_group_path(@group.city.id,@group) %><br>	
+		</div>	
+		<% else %>
+		<div id="group-join-button">
+			<%= link_to "Leave Group", unjoin_city_group_path(@group.city.id,@group) %><br>	
+		</div>
+		<% end %>
+		<% end %>
+	</div>
+</div>	
+
+<% if @group.users.where(:email => "#{current_user.email}").exists? %>
+
+<div class="row-fluid">
+<div class="span12">
+	The members of this group are:<br>
+	<% @group.memberships.each do |members| %><br>
+	<%= members.user.email %>
+	<% end %>
+</div>
+</div>
+
+<% end %>
+
+</div>
+
+<%= link_to "Edit", edit_city_group_path%>
