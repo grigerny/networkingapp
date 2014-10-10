@@ -50,3 +50,4 @@ gem "twitter-bootstrap-rails"
 gem 'less-rails', '~> 2.5.0'
 gem 'protected_attributes'
 gem 'wicked'
+gem "wice_grid", '3.4.2'

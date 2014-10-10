@@ -24,6 +24,14 @@
 List of Groups:<br>
 <% @city.groups.each do |group| %>
 <%= link_to group.name, city_group_path(@city, group.id) %>
+<%= group.memberships.count %>/12  
+<% if group.users.where(:industry => current_user.industry).exists? %>
+Taken
+<% else %>
+Available
+<% end %>
+
+
 <% end %>
 </div>
 </div>
