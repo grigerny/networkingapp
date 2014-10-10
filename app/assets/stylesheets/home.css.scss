@@ -4,13 +4,12 @@
 
 #navbar{
 	height:60px;
-	background:#F1F1F1;
 }
 
 .logo{
 	padding:20px;
-	font-family: 'Raleway', sans-serif;
-	font-size:36px;
+	font-family: 'helvetica Neue';
+	font-size:28px;
 	text-decoration:none;
 	outline: none;
     box-shadow:none !important;
@@ -18,8 +17,8 @@
 
 .logo:hover{
 	padding:20px;
-	font-family: 'Raleway', sans-serif;
-	font-size:36px;
+	font-family: 'helvetica Neue';
+	font-size:28px;
 	text-decoration:none;
 	outline: none;
     box-shadow:none !important;
@@ -28,9 +27,18 @@
 #home-title{
 	margin-top:60px;
 	text-align:center;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size:64px;
 	margin-bottom:60px;
+}
+
+.group-name-title{
+  	font-family:'helvetica Neue';
+  	font-weight: bold;
+  	font-size:46px;
+	text-align:center;
+	padding:80px;
+	color:white;
 }
 
 #home-networking_group-buttons{
@@ -40,7 +48,7 @@
 
 .home-networking_group-buttons-css{
 	color:black;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size:36px;
 	text-decoration:none;
 	outline: none;
@@ -49,7 +57,7 @@
 
 .home-networking_group-buttons-css:hover{
 	color:blue;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size:36px;
 	text-decoration:none;
 	outline: none;

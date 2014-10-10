@@ -5,7 +5,6 @@ class Membership < ActiveRecord::Base
   attr_accessible :group_id, :user_id, :status
   validates_uniqueness_of :group_id, :scope => 'user_id'
  
-  
   validate :membership_count_within_limit, :on => :create
  
 

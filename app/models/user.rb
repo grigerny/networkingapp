@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates :phone, :presence => true, :if => :persisted?
   
         
- attr_accessible :email, :password, :company, :industry, :first_name, :last_name, :title, :phone, :address1, :address2, :city, :state, :zip
+ attr_accessible :email, :password, :company, :industry, :first_name, :last_name, :title, :phone, :address1, :address2, :city, :state , :zip
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

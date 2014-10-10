@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2517430856">
+    <data-source source="LOCAL" name="Rails networkingapp: development" uuid="5e6a920f-8446-4197-9b27-d62cb8a8dc69">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/networkingapp</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails networkingapp: production" uuid="4c93cec6-45d5-4c8a-9e1e-4b29141c4f43">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:networkingapp</jdbc-url>
+      <user-name>networkingapp</user-name>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+

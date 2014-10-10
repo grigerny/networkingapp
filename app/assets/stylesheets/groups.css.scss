@@ -5,31 +5,31 @@
 #group-show-title{
 	margin:40px;
 	text-align:center;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'helvetica Neue';
 	font-size:64px;
 }
 
 #group-hello-member{
 	padding:20px;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size:28px;
 }
 
 #group-users-count{
 	padding:20px;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size:28px;
 }
 
 #group-summary-heading{
 	padding:20px;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size:28px;
 }
 
 #group-industries-list{
 	padding:20px;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size:18px;
 }
 
@@ -39,20 +39,20 @@
 	color:white;
 	float:left;
 	padding:20px;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size:18px;
 }
 
 #group-industry-may_join{
 	padding:20px;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size:28px;
 	line-height:40px;
 }
 
 #group-industry-may_not_join{
 	padding:20px;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size:28px;
 	line-height:40px;
 }
@@ -67,7 +67,7 @@
 	color:white;
 	float:left;
 	padding:20px;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size:18px;
 	text-decoration:none !important ;
 	outline: none;
@@ -82,7 +82,7 @@
 	color:white;
 	float:left;
 	padding:20px;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size:18px;
 	text-decoration:none !important ;
 	outline: none;
@@ -97,11 +97,17 @@
 	color:white;
 	float:left;
 	padding:20px;
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size:18px;
 	text-decoration:none !important ;
 	outline: none;
 	-moz-box-shadow: 0 0 5px #888;
 	-webkit-box-shadow: 0 0 5px#888;
 	box-shadow: 0 0 5px #888;
+}
+
+#group-show-image{
+	background-image:url('breakfast.jpg');
+	height:200px;
+	background-size:cover;
 }

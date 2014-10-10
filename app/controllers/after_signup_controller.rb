@@ -8,7 +8,7 @@ class AfterSignupController < ApplicationController
   end
   
   def update
-      @user = User.find(params[:user_id])
+      @user = current_user
       params[:user][:status] = step.to_s
       params[:user][:status] = 'active' if step == steps.last
       @user.update_attributes(params[:user])

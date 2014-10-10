@@ -45,6 +45,8 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
+gem "therubyracer"
 gem "twitter-bootstrap-rails"
+gem 'less-rails', '~> 2.5.0'
 gem 'protected_attributes'
 gem 'wicked'
