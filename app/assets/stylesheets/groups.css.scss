@@ -9,6 +9,15 @@
 	font-size:64px;
 }
 
+.group-name-title{
+  	font-family:'helvetica Neue';
+  	font-weight: bold;
+  	font-size:46px;
+	padding:80px;
+	color:white;
+}
+
+
 #group-hello-member{
 	padding:20px;
 	font-family: 'Open Sans', sans-serif;
@@ -109,7 +118,7 @@
 #group-show-background{
 	margin-top:-20px;
 	background:#474B4F;
-	height:200px;
+	height:240px;
 	background-size:cover;
 }
 .ui.sidebar{
@@ -125,4 +134,36 @@
 
 .new-city-group-button{
 	margin:40px;
+}
+
+.group-show-subheading{
+	color:#fff;
+	font-size:20px;
+}
+
+.member-count-border{
+	margin-left:100px;
+	background:#3192FA;
+	margin-top:60px;
+	height:20px;
+	width:40px;
+	padding:20px;
+}
+.member-count{
+	font-family:'helvetica Neue';
+  	font-weight: bold;
+  	font-size:46px;
+	color:white;
+	text-align:center;
+	background:#3192FA;
+}
+.member-word-members{
+	position:absolute;
+	color:white;
+	left:110px;
+}
+
+.group-member-name{
+	font-weight:bold;
+	margin-top:30px;
 }

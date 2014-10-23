@@ -1,37 +1,40 @@
-<div id="group-show-background">
-	<div class="group-name-title">
-		<%= @group.name %>
-	</div>
-</div>
-
 <div class="row-fluid">
 <div class="span12">
-
+	<div id="group-show-background">
+			<div class="row-fluid">		
+				<div class="span4">
+					<div class="member-count-border">
+					<div class="member-count">
+						<%= @group.memberships.count %><br>
+					</div>
+					<div class="member-word-members"><br>
+					members
+					</div>
+					</div>
+				</div>
+		
+		<div class="span8">
+			<div class="group-name-title">
+				<%= @group.name %>
+			</div>
+		</div>
+		</div>
+			<div class="row-fluid">
+			<div class="span12">
+				<div class="group-show-subheading">
+					<center>Meets at <%= @group.venue %> <%= @group.address %> <%= @group.time %> </center>
+					</div>
+			</div>
+			</div>
+		
+		
+	</div>
 </div>
 </div>
 
 </div>
 <div class="container">
 		<%= flash[:notice] %>
-	<div class="row-fluid">
-	<div class="span12">
-		<h2>Information</h2>	
-		<b>Venue:</b> <%= @group.venue %><br>
-		<b>Address:</b> <%= @group.address%><br>
-		<b>Schedule:</b> <%= @group.time %>
-	</div>
-	</div>
-	
-<h2>Stats</h2>	
-<b>Members:</b> <%= @group.memberships.count %><br>
-<b>Industries represented:</b>
-
-<% @group.memberships.each do |members| %>
-<div class="industry-css">
-<%= members.user.industry %>
-</div>
-<% end %>
-
 
 <% if user_signed_in? %>	
 
@@ -39,11 +42,11 @@
 	<div class="span12">
 		<% if @group.memberships.count < 13 && unless @group.users.where(:email => "#{current_user.email}").exists? %>
 		<div id="group-join-button">
-			<%= link_to "Join Group", join_city_group_path(@group.city.id,@group) %><br>	
+			<%= link_to "Join Group", join_city_group_path(@group.city.id,@group), :confirm => "Are you sure you want to join this group?" %><br>	
 		</div>	
 		<% else %>
 		<div id="group-join-button">
-			<%= link_to "Leave Group", unjoin_city_group_path(@group.city.id,@group) %><br>	
+			<%= link_to "Leave Group", unjoin_city_group_path(@group.city.id,@group), :confirm => "Are you sure you want to do leave the group?" %><br>	
 		</div>
 		<% end %>
 		<% end %>
@@ -53,13 +56,25 @@
 <% if @group.users.where(:email => "#{current_user.email}").exists? %>
 
 <div class="row-fluid">
-<div class="span12">
-	The members of this group are:<br>
+	
+<div class="span2">
 	<% @group.memberships.each do |members| %><br>
-	<%= members.user.first_name %> <%= members.user.last_name %>
+	<%= gravatar_tag members.user.email, :size => 80 %><br>
 	<% end %>
 </div>
+
+<div class="span6">
+	<% @group.memberships.each do |members| %><br>
+	<div class="group-member-name">
+	<%= members.user.first_name %> <%= members.user.last_name %> 
+	</div>
+	<%= members.user.industry %><br>
+	<%= link_to "Contact Me", "mailto:#{members.user.email}" %>
+	<% end %>
 </div>
+		
+</div>
+
 <%= link_to "Edit", edit_group_path%>
 
 <% end %>
