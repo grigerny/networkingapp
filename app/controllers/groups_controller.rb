@@ -4,7 +4,8 @@ before_action :authenticate_user!, :except => [:index, :show]
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    @city = City.find(city_group_path)
+    @groups = @city.groups
   end
 
   # GET /groups/1

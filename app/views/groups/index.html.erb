@@ -10,12 +10,13 @@
   </thead>
 
   <tbody>
-    <% @group_pages.each do |group_page| %>
+    <% @city.groups.each do |group| %>
 
+	<%= group.name %>
       <tr>
-        <td><%= link_to 'Show', group_page %></td>
-        <td><%= link_to 'Edit', edit_group_page_path(group_page) %></td>
-        <td><%= link_to 'Destroy', group_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', group %></td>
+        <td><%= link_to 'Edit', edit_group_path(group) %></td>
+        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -23,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Group page', new_group_page_path %>
+<%= link_to 'New Group page', new_group_path %>

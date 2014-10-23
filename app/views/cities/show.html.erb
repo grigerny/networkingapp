@@ -1,37 +1,55 @@
 <p id="notice"><%= notice %></p>
 
+<div class="container">
 <div class="row-fluid">
 	<div class="span12">
 		<div id="group-show-title">	
-			<%= @city.name %>
+			<%= @city.name %> 
 		</div>	
 	</div>
-</div>
-
-
 	
-
-<div class="row-fluid">
-	<div class="span12">
-		<div id="group-hello-member">	
-		 Welcome! There are <%= @city.groups.count %> networking groups in <%= @city.name %>
-		</div>	
-	</div>
+</div>
 </div>
 
-<div class="row-fluid">
-<div class="span12">
-List of Groups:<br>
-<% @city.groups.each do |group| %>
-<%= link_to group.name, city_group_path(@city, group.id) %>
-<%= group.memberships.count %>/12  
-<% if group.users.where(:industry => current_user.industry).exists? %>
-Taken
-<% else %>
-Available
+<%#- This is Semantic UI, used to add a dynamic sidebar -%>
+
+        <div class="ui thin vertical inverted labeled icon left overlay sidebar menu">	
+        </div>
+        <div class="ui black huge launch right attached button">
+	        <span class="text" style="display:none;"></span>
+	        <i class="icon list layout"></i>
+        </div>
+
+<div class="ui sidebar"> 
+<%= link_to new_city_group_path(@city), :class =>"new-city-group-button" do %>
+<div class="positive ui button">New Group</div>
 <% end %>
+</div>
 
+<script>
+$(".launch.button").mouseenter(function(){
+		$(this).stop().animate({width: '70px'}, 300, 
+             function(){$(this).find('.text').show();});
+	}).mouseleave(function (event){
+		$(this).find('.text').hide();
+		$(this).stop().animate({width: '70px'}, 300);
+	});
+$(".ui.sidebar").sidebar({overlay: false})
+                .sidebar('attach events','.ui.launch.button');
+</script>
 
+<div class="container">
+<div class="row-fluid">
+<% @city.groups.each do |group| %>
+<div class="span6">
+<b>Name</b>
+<br>
+<%= link_to group.name, city_group_path(@city, group.id) %>
+</div>
+<div class="span6">
+	<b>Members</b><br>
+<%= group.memberships.count %>/12
+</div>
 <% end %>
 </div>
 </div>

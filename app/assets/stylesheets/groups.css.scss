@@ -106,8 +106,23 @@
 	box-shadow: 0 0 5px #888;
 }
 
-#group-show-image{
-	background-image:url('breakfast.jpg');
+#group-show-background{
+	margin-top:-20px;
+	background:#474B4F;
 	height:200px;
 	background-size:cover;
+}
+.ui.sidebar{
+	padding:20px;
+	background-color:#474B50;
+}
+.launch.button {
+    position: fixed;
+    top: 40px;
+	right: auto;
+    width: 70px;
+}
+
+.new-city-group-button{
+	margin:40px;
 }

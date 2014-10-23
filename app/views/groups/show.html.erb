@@ -1,4 +1,4 @@
-<div id="group-show-image">
+<div id="group-show-background">
 	<div class="group-name-title">
 		<%= @group.name %>
 	</div>
@@ -24,7 +24,7 @@
 	
 <h2>Stats</h2>	
 <b>Members:</b> <%= @group.memberships.count %><br>
-<b>Industries represented:</b><br><br>
+<b>Industries represented:</b>
 
 <% @group.memberships.each do |members| %>
 <div class="industry-css">
@@ -56,7 +56,7 @@
 <div class="span12">
 	The members of this group are:<br>
 	<% @group.memberships.each do |members| %><br>
-	<%= members.user.email %>
+	<%= members.user.first_name %> <%= members.user.last_name %>
 	<% end %>
 </div>
 </div>
