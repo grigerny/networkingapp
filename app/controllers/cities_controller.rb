@@ -7,6 +7,7 @@ before_action :authenticate_user!, :except => [:index, :show]
 
   def show
     @city = City.find(params[:id])
+    @groups_grid = initialize_grid(Group)
   end
 
   # GET /groups/new

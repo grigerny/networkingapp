@@ -4,4 +4,6 @@ class Group < ActiveRecord::Base
   belongs_to :city
   attr_accessible :name, :city_id, :address, :venue, :time, :description, :time_specific, :rules
   
+  validates_presence_of :name, :address, :venue, :description, :time_specific
+  
 end

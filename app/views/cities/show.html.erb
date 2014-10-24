@@ -1,28 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container">
 <div class="row-fluid">
 	<div class="span12">
 		<div id="group-show-title">	
 			<%= @city.name %> 
 		</div>	
 	</div>
-	
 </div>
-</div>
+
+<% if user_signed_in? %>
 
 <%#- This is Semantic UI, used to add a dynamic sidebar -%>
 
-        <div class="ui thin vertical inverted labeled icon left overlay sidebar menu">	
-        </div>
+      <div class="ui thin vertical inverted labeled icon left overlay sidebar menu">	
+      </div>
         <div class="ui black huge launch right attached button">
 	        <span class="text" style="display:none;"></span>
 	        <i class="icon list layout"></i>
         </div>
 
 <div class="ui sidebar"> 
+		<div class="row-fluid">
+			<div class="span12">
+				
 <%= link_to new_city_group_path(@city), :class =>"new-city-group-button" do %>
-<div class="positive ui button">New Group</div>
+<div class="positive ui button">Start a Group</div>
 <% end %>
 </div>
 
@@ -37,42 +39,58 @@ $(".launch.button").mouseenter(function(){
 $(".ui.sidebar").sidebar({overlay: false})
                 .sidebar('attach events','.ui.launch.button');
 </script>
+<br><br>
+
+
+<div class="ui piled segment">
+  <center><h2>My Group</h2></center>
+  <% current_user.memberships.each  do |membership| %>
+  <center><%= link_to membership.group.name, city_group_path(membership.group.city.id,membership.group.id) %></center>
+  <% end %>
+</div>
+
+
+		    </div>
+	    </div>
+</div>
+
+<% end %>
 
 <div class="container">
 
 <div class="row-fluid">
-<div class="span3">
-<b>NAME</b>
-<br>
-<hr>
+		
+	<div class="row-fluid">
+	<div class="span3">
+	<b>NAME</b>
+	<br>
+	<hr>
 
-<% @city.groups.each do |group| %>
-<%= link_to group.name, city_group_path(@city, group.id) %><br><br>
-<% end %>
-</div>
-
-
-<div class="span3">
-<b>MEMBERS</b><br><hr>
-<% @city.groups.each do |group| %>
-<%= group.memberships.count %>/12<br><br>
-<% end %>
-</div>
+	<% @city.groups.each do |group| %>
+	<%= link_to group.name, city_group_path(@city, group.id) %><br><br>
+	<% end %>
+	</div>
 
 
-<div class="span3">
-<b>FREQUENCY</b><br><hr>
-<% @city.groups.each do |group| %>
-<%= group.time %><br><br>
-<% end %>
-</div>
+	<div class="span3">
+	<b>MEMBERS</b><br><hr>
+	<% @city.groups.each do |group| %>
+	<%= group.memberships.count %>/12<br><br>
+	<% end %>
+	</div>
 
-<div class="span3">
-<b>DESCRIPTION</b><br><hr>
-<% @city.groups.each do |group| %>
-<%= group.description %><br><br>
-<% end %>
 
-</div>
-</div>
+	<div class="span3">
+	<b>FREQUENCY</b><br><hr>
+	<% @city.groups.each do |group| %>
+	<%= group.time %><br><br>
+	<% end %>
+	</div>
+
+	<div class="span3">
+	<b>DESCRIPTION</b><br><hr>
+	<% @city.groups.each do |group| %>
+	<%= group.description %><br><br>
+	<% end %>
+
 </div>

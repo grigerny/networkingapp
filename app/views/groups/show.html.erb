@@ -36,6 +36,8 @@
 
 </div>
 
+<% if user_signed_in? %>
+
 <%#- This is Semantic UI, used to add a dynamic sidebar -%>
 
         <div class="ui thin vertical inverted labeled icon left overlay sidebar menu">	
@@ -45,26 +47,36 @@
 	        <i class="icon list layout"></i>
         </div>
 
-<% if user_signed_in? %>
-
 <div class="ui sidebar"> 
 	<div class="row-fluid">
 		<div class="span12">
 			<% if @group.memberships.count < 13 && unless @group.users.where(:email => "#{current_user.email}").exists? %>
-				<%= link_to join_city_group_path(@group.city.id,@group), :confirm => "Are you sure you want to join this group?" do %> 
+				<%= link_to join_city_group_path(@group.city.id,@group), :class => "new-city-group-button", :confirm => "Are you sure you want to join this group?" do %> 
 			<div class="positive ui button">Join Group</div>
 			<% end %>	
 			<% end %>
 			<% else %>
 			
-			<%= link_to unjoin_city_group_path(@group.city.id,@group), :confirm => "Are you sure you want to leave this group?" do %> 
+			<%= link_to unjoin_city_group_path(@group.city.id,@group), :class => "new-city-group-button",  :confirm => "Are you sure you want to leave this group?" do %> 
 				<div class="negative ui button">Leave Group</div>
 			<% end %>
 			<% end %>
+			
 		
+			
+			
+			<div class="ui piled segment">
+			  <center><h2>My Group</h2></center>
+			  <% current_user.memberships.each  do |membership| %>
+			  <center><%= link_to membership.group.name, city_group_path(membership.group.city.id,membership.group.id) %></center>
+			  <% end %>
+			</div>
+			
+	
 		</div>
 	</div>
 </div>
+
 
 <% else %>
 
