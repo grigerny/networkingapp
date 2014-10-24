@@ -39,17 +39,40 @@ $(".ui.sidebar").sidebar({overlay: false})
 </script>
 
 <div class="container">
+
 <div class="row-fluid">
-<% @city.groups.each do |group| %>
-<div class="span6">
-<b>Name</b>
+<div class="span3">
+<b>NAME</b>
 <br>
-<%= link_to group.name, city_group_path(@city, group.id) %>
-</div>
-<div class="span6">
-	<b>Members</b><br>
-<%= group.memberships.count %>/12
-</div>
+<hr>
+
+<% @city.groups.each do |group| %>
+<%= link_to group.name, city_group_path(@city, group.id) %><br><br>
 <% end %>
+</div>
+
+
+<div class="span3">
+<b>MEMBERS</b><br><hr>
+<% @city.groups.each do |group| %>
+<%= group.memberships.count %>/12<br><br>
+<% end %>
+</div>
+
+
+<div class="span3">
+<b>FREQUENCY</b><br><hr>
+<% @city.groups.each do |group| %>
+<%= group.time %><br><br>
+<% end %>
+</div>
+
+<div class="span3">
+<b>DESCRIPTION</b><br><hr>
+<% @city.groups.each do |group| %>
+<%= group.description %><br><br>
+<% end %>
+
+</div>
 </div>
 </div>

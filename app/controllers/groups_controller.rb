@@ -17,22 +17,25 @@ before_action :authenticate_user!, :except => [:index, :show]
 
   # GET /groups/new
   def new
-    @group = Group.new
+    @city = City.find(params[:city_id])
+    @group = @city.groups.new
   end
 
   # GET /groups/1/edit
   def edit
-    @group = Group.find(params[:id])
+    @city = City.find(params[:city_id])
+    @group = @city.groups.find(params[:id])
   end
 
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new
+    @city = City.find(params[:city_id])
+    @group = @city.groups.new(params[:group])
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to city_group_path, notice: 'Group page was successfully created.' }
+        format.html { redirect_to [@city, @group], notice: 'Group page was successfully created.' }
         format.json { render action: 'show', status: :created, location: @group }
       else
         format.html { render action: 'new' }
@@ -44,10 +47,12 @@ before_action :authenticate_user!, :except => [:index, :show]
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
+    @city = City.find(params[:city_id])
+    @group = @city.groups.find(params[:id])
+    
     respond_to do |format|
-      if @group = Group.find(params[:id])
-         @group.update_attributes(params[:group])
-        format.html { redirect_to (@group), notice: 'Group page was successfully updated.' }
+        if @group.update_attributes(params[:group])
+        format.html { redirect_to [@city, @group], notice: 'The group was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

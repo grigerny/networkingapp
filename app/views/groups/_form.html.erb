@@ -1,4 +1,4 @@
-<%= form_for @group do |f| %>
+<%= form_for([@city, @group]) do |f| %>
   <% if @group.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+<div class="container">
+	<div class="row-fluid">
+		<div class="span12">
+			<center>
 Give your group a cool name:<br>
 <%= f.text_field :name, :placeholder => "Power Attorneys & CPAs" %><br>
 
@@ -23,7 +27,7 @@ Address of venue, if you don't have one yet just put TBD:<br>
 This group will meet: <br>
 <%= f.select :time, [['Daily', 'Daily'], ['Weekly', 'Weekly'], ['Bi-Weekly', 'Bi-weekly'], ['Monthly', 'Monthly']] %><br>
 
-<b>Group Description</b> <br>In a few sentences explain what your group is all about.<br>
+<b>Group Description:</b> In a few sentences explain what your group is all about.<br>
 <%= f.text_area :description, :class=> "input-xxlarge", :placeholder => "This is a business networking group for attorneys practicing law in varying specialties." %> <br>
 
 <b>Meeting Date/Time:</b> Provide more specifics on the date and time of your meetings. <br>
@@ -33,8 +37,11 @@ This group will meet: <br>
 <%= f.text_area :rules, :class=> "input-xxlarge", :placeholder => "We allow a maximum of 3 absences per quarter" %>
 
   <div class="actions">
-    <%= f.submit "Save" %>
+    <%= f.submit "Create Group" %>
   </div>
 <% end %>
-
+</center>
+		</div>
+	</div>
+</div>		
 

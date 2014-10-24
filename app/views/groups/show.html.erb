@@ -51,15 +51,17 @@
 	<div class="row-fluid">
 		<div class="span12">
 			<% if @group.memberships.count < 13 && unless @group.users.where(:email => "#{current_user.email}").exists? %>
-			<div class="positive ui button">
-				<%= link_to "Join Group", join_city_group_path(@group.city.id,@group), :confirm => "Are you sure you want to join this group?" %><br>	
-			</div>	
+				<%= link_to join_city_group_path(@group.city.id,@group), :confirm => "Are you sure you want to join this group?" do %> 
+			<div class="positive ui button">Join Group</div>
+			<% end %>	
+			<% end %>
 			<% else %>
-			<div class="negative ui button">
-				<%= link_to "Leave Group", unjoin_city_group_path(@group.city.id,@group), :confirm => "Are you sure you want to do leave the group?" %><br>	
-			</div>
+			
+			<%= link_to unjoin_city_group_path(@group.city.id,@group), :confirm => "Are you sure you want to leave this group?" do %> 
+				<div class="negative ui button">Leave Group</div>
 			<% end %>
 			<% end %>
+		
 		</div>
 	</div>
 </div>
@@ -115,7 +117,7 @@ $(".ui.sidebar").sidebar({overlay: false})
 	<% end %>
 </div>
 
-<div class="span4">
+<div class="span4"><br><br>
 	<b>Description</b><br>
 	<%= simple_format @group.description %><br>
 	<b>Time & Date</b><br>
@@ -126,7 +128,7 @@ $(".ui.sidebar").sidebar({overlay: false})
 		
 </div>
 
-<%= link_to "Edit", edit_group_path%>
+<%= link_to "Edit", edit_city_group_path%>
 
 <% end %>
 <% end %>
