@@ -22,7 +22,7 @@
 			<div class="row-fluid">
 			<div class="span12">
 				<div class="group-show-subheading">
-					<center>Meets at <%= @group.venue %> <%= @group.address %> <%= @group.time %> </center>
+					<center>Meets <%= @group.time.downcase %> at <%= @group.venue %> <%= @group.address %>  </center>
 					</div>
 			</div>
 			</div>
@@ -71,6 +71,11 @@
 	<%= members.user.industry %><br>
 	<%= link_to "Contact Me", "mailto:#{members.user.email}" %>
 	<% end %>
+</div>
+
+<div class="span4">
+	<b>Description</b><br>
+	<%= @group.description %>
 </div>
 		
 </div>

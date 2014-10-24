@@ -11,19 +11,24 @@
     </div>
   <% end %>
 
-Name:
-<%= f.text_field :name %><br>
+Give your group a cool name:<br>
+<%= f.text_field :name, :placeholder => "Power Attorneys & CPAs" %><br>
 
-Venue:
-<%= f.text_field :venue %><br>
+Name of venue, if you don't have one yet just put TBD:<br>
+<%= f.text_field :venue, :placeholder => "The W Hotel Lounge" %><br>
 
-Address:
-<%= f.text_field :address %><br>
+Address of venue, if you don't have one yet just put TBD:<br>
+<%= f.text_field :address, :placeholder => "200 Rt. 110 Melville, NY" %><br>
 
-When and how often does this group meet?:
-<%= f.text_field :time %><br>
+This group will meet: <br>
+<%= f.select :time, [['Daily', 'Daily'], ['Weekly', 'Weekly'], ['Bi-Weekly', 'Bi-weekly'], ['Monthly', 'Monthly']] %><br>
+
+<b>Group Description</b> <br>1 - In a few sentences explain what your group is all about. <br>2 - Provide more specifics on when your groups meets. <br>3 - This is also a great place to add any rules or expectations for your group.<br>
+<%= f.text_area :description, :class=> "input-xxlarge" %> 
 
   <div class="actions">
     <%= f.submit "Save" %>
   </div>
 <% end %>
+
+
