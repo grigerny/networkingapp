@@ -75,7 +75,11 @@
 
 <div class="span4">
 	<b>Description</b><br>
-	<%= @group.description %>
+	<%= simple_format @group.description %><br>
+	<b>Time & Date</b><br>
+	<%= simple_format @group.time_specific %><br>
+	<b>Rules</b><br>
+	<%= simple_format @group.rules %>
 </div>
 		
 </div>
