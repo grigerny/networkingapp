@@ -23,11 +23,7 @@
 		<div class="row-fluid">
 			<div class="span12">
 				
-<%= link_to new_city_group_path(@city), :class =>"new-city-group-button" do %>
-<div class="positive ui button">Start a Group</div>
-<% end %>
-</div>
-
+				
 <script>
 $(".launch.button").mouseenter(function(){
 		$(this).stop().animate({width: '70px'}, 300, 
@@ -39,8 +35,14 @@ $(".launch.button").mouseenter(function(){
 $(".ui.sidebar").sidebar({overlay: false})
                 .sidebar('attach events','.ui.launch.button');
 </script>
-<br><br>
 
+
+<% unless current_user.memberships.exists? %>				
+<%= link_to new_city_group_path(@city), :class =>"new-city-group-button" do %>
+<div class="positive ui button">Start a Group</div>	
+</div>
+<% end %>
+<% end %>
 
 <div class="ui piled segment">
   <center><h2>My Group</h2></center>
