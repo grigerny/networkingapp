@@ -142,12 +142,14 @@ $(".ui.sidebar").sidebar({overlay: false})
 <% end %>
 <% end %>
 
+<% if user_signed_in? %>
 <% unless @group.users.where(:email => "#{current_user.email}").exists? %>
 <div class="row-fluid">
 	<div class="span12"><br><br>
 		<center><h2>This space is visible to group members only.</h></center>
 	</div>
 </div>
+<% end %>
 <% end %>
 
 
