@@ -34,7 +34,7 @@
 </div>
 </div>
 
-</div>
+</div>	
 
 <% if user_signed_in? %>
 
@@ -104,6 +104,7 @@ $(".ui.sidebar").sidebar({overlay: false})
 
 <div class="container">
 		<%= flash[:notice] %>
+		
 	
 <% if user_signed_in? %>
 <% if @group.users.where(:email => "#{current_user.email}").exists? %>
@@ -138,9 +139,18 @@ $(".ui.sidebar").sidebar({overlay: false})
 </div>
 
 <%= link_to "Edit", edit_city_group_path%>
+<% end %>
+<% end %>
 
+<% unless @group.users.where(:email => "#{current_user.email}").exists? %>
+<div class="row-fluid">
+	<div class="span12"><br><br>
+		<center><h2>This space is visible to group members only.</h></center>
+	</div>
+</div>
 <% end %>
-<% end %>
+
+
 
 
 
