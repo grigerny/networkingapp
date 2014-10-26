@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :memberships, :dependent => :destroy
   has_many :groups, :through => :memberships
+  has_many :groups
   
   validates :first_name, :presence => true, :if => :persisted?
   
@@ -15,7 +16,7 @@ class User < ActiveRecord::Base
   validates :phone, :presence => true, :if => :persisted?
   
         
- attr_accessible :email, :password, :company, :industry, :first_name, :last_name, :title, :phone, :address1, :address2, :city, :state , :zip
+ attr_accessible :email, :password, :company, :industry, :first_name, :last_name, :title, :phone, :address1, :address2, :city, :state , :zip, :group_id
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
