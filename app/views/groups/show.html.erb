@@ -62,21 +62,23 @@
 			<% end %>
 			<% end %>
 			
+			 <% if current_user.groups.exists? %>
 			<div class="ui piled segment">
 			  <center><h4>My Group</h4></center>
-			 <% if current_user.groups.exists? %>
 			 <% current_user.groups.each do |user_group| %>
 				<center><%= link_to user_group.name, city_group_path(user_group.city_id,user_group.id) %></center>
 				<% end %>
-				<% end %>
 			</div>
+			<% end %>
 			
+			<% if current_user.memberships.exists? %>
 			<div class="ui piled segment">
 			  <center><h4>Joined Group</h4></center>
 			  <% current_user.memberships.each  do |membership| %>
 			  <center><%= link_to membership.group.name, city_group_path(membership.group.city.id,membership.group.id) %></center>
 			  <% end %>
 			</div>
+			<% end %>
 			
 	
 		</div>
