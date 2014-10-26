@@ -32,6 +32,7 @@ before_action :authenticate_user!, :except => [:index, :show]
   def create
     @city = City.find(params[:city_id])
     @group = @city.groups.new(params[:group])
+    @group.user = current_user
 
     respond_to do |format|
       if @group.save
