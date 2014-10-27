@@ -15,4 +15,5 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require wice_grid
+//= require gritter
 //= require_tree .

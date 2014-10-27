@@ -36,7 +36,8 @@ before_action :authenticate_user!, :except => [:index, :show]
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to [@city, @group], notice: 'Group page was successfully created.' }
+        gflash :success => "Group page was successfully created."
+        format.html { redirect_to [@city, @group] }
         format.json { render action: 'show', status: :created, location: @group }
       else
         format.html { render action: 'new' }
@@ -53,7 +54,8 @@ before_action :authenticate_user!, :except => [:index, :show]
     
     respond_to do |format|
         if @group.update_attributes(params[:group])
-        format.html { redirect_to [@city, @group], notice: 'The group was successfully updated.' }
+        gflash :notice => "Your group was successfully updated."
+        format.html { redirect_to [@city, @group] }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -65,9 +67,12 @@ before_action :authenticate_user!, :except => [:index, :show]
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
+    @city = City.find(params[:city_id])
+    @group = @city.groups.find(params[:id])
     @group.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url }
+      gflash :notice => "Your group was successfully deleted."
+      format.html { redirect_to root_url}
       format.json { head :no_content }
     end
   end
@@ -78,7 +83,8 @@ before_action :authenticate_user!, :except => [:index, :show]
 
          respond_to do |format|
            if @membership.save
-             format.html { redirect_to(city_group_path, :notice => 'You have joined a networking group.') }
+             gflash :success => "You have joined this group!"
+             format.html { redirect_to(city_group_path) }
              format.xml  { head :ok }
            else
              format.html { redirect_to(city_group_path, :notice => 'You have already joined a networking group.') }
@@ -91,7 +97,8 @@ before_action :authenticate_user!, :except => [:index, :show]
        @group = Group.find(params[:id])
        @membership = @group.memberships.find_by_user_id(current_user.id)
        @membership.destroy rescue nil
-       redirect_to(city_group_path, :notice => 'You have left this networking group.')
+       gflash :success => "You have left this group!"
+       redirect_to(city_group_path)
      end
 
   private

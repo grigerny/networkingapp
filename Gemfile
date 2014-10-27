@@ -53,3 +53,4 @@ gem 'wicked'
 gem "wice_grid", '3.4.2'
 gem 'semantic-ui-rails'
 gem 'gravatarify', '~> 3.0.0'
+gem "gritter", "1.1.0"

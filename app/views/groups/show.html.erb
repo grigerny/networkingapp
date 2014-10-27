@@ -121,7 +121,8 @@ $(".ui.sidebar").sidebar({overlay: false})
 <% if @group.users.where(:email => "#{current_user.email}").exists? %>
 
 <div class="row-fluid">
-	
+
+
 <div class="span2">
 	<% @group.memberships.each do |members| %><br>
 	<%= gravatar_tag members.user.email, :size => 80 %><br>
@@ -134,8 +135,13 @@ $(".ui.sidebar").sidebar({overlay: false})
 	<%= members.user.first_name %> <%= members.user.last_name %> 
 	</div>
 	<%= members.user.industry %><br>
-	<%= link_to "Contact Me", "mailto:#{members.user.email}" %>
+	<%= link_to "Contact" " " "#{members.user.first_name}", "mailto:#{members.user.email}" %>
+	<% if user_signed_in? && @group.user == current_user %>
+	<%= link_to "Remove User", membership_path(members), :method => :delete %><br>
 	<% end %>
+	<% end %>
+	
+
 </div>
 
 <div class="span4"><br><br>
@@ -149,7 +155,8 @@ $(".ui.sidebar").sidebar({overlay: false})
 		
 </div>
 
-<%= link_to "Edit", edit_city_group_path%>
+
+
 <% end %>
 <% end %>
 
@@ -163,7 +170,9 @@ $(".ui.sidebar").sidebar({overlay: false})
 <% end %>
 <% end %>
 
-
-
+<% if user_signed_in? && @group.user == current_user %>
+<%= link_to "Edit Group", edit_city_group_path %><br>
+<%= link_to "Delete Group", city_group_path, :confirm => "are you sure?", :method => :delete %>
+<% end %>
 
 
