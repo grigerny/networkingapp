@@ -25,10 +25,9 @@
 			<div class="span12">
 				<div class="group-show-subheading">
 					<center>Meets <%= @group.time.downcase %> at <%= @group.venue %> <%= @group.address %>  </center>
-					</div>
+				</div>
 			</div>
 			</div>
-		
 		
 	</div>
 </div>
@@ -50,17 +49,23 @@
 <div class="ui sidebar"> 
 	<div class="row-fluid">
 		<div class="span12">
-			<% if @group.memberships.count < 13 && unless @group.users.where(:email => "#{current_user.email}").exists? %>
+		
+			
+			
+			<%  if @group.memberships.count < 13 && unless @group.users.where(:email => "#{current_user.email}").exists? %>
 				<%= link_to join_city_group_path(@group.city.id,@group), :class => "new-city-group-button", :confirm => "Are you sure you want to join this group?" do %> 
 			<div class="positive ui button">Join Group</div>
 			<% end %>	
 			<% end %>
+		
 			<% else %>
+			
 			
 			<%= link_to unjoin_city_group_path(@group.city.id,@group), :class => "new-city-group-button",  :confirm => "Are you sure you want to leave this group?" do %> 
 				<div class="negative ui button">Leave Group</div>
 			<% end %>
 			<% end %>
+		
 			
 			 <% if current_user.groups.exists? %>
 			<div class="ui piled segment">
@@ -134,7 +139,7 @@ $(".ui.sidebar").sidebar({overlay: false})
 	<div class="group-member-name">
 	<%= members.user.first_name %> <%= members.user.last_name %> 
 	</div>
-	<%= members.user.industry %><br>
+	<%= members.user.industry %> <i><%= members.user.focus_area %></i><br>
 	<%= link_to "Contact" " " "#{members.user.first_name}", "mailto:#{members.user.email}" %>
 	<% if user_signed_in? && @group.user == current_user %>
 	<%= link_to "Remove User", membership_path(members), :method => :delete %><br>
@@ -162,11 +167,26 @@ $(".ui.sidebar").sidebar({overlay: false})
 
 <% if user_signed_in? %>
 <% unless @group.users.where(:email => "#{current_user.email}").exists? %>
-<div class="row-fluid">
-	<div class="span12"><br><br>
-		<center><h2>This space is visible to group members only.</h></center>
+		<div class="row-fluid"><br><br>
+		<center><h2>You must be a group member to see group details.</h></center><br>
+			</div>
+				<div class="row-fluid">
+				<div class="span8">
+				<% @group.memberships.each do |members| %>
+				<b>Industries Represented:</b><br>
+				<%= members.user.industry %>  <i><%= members.user.focus_area %></i><br>
+				<% end %>
+				</div>
+				
+				<div class="span4">
+					<b>Description</b><br>
+					<%= simple_format @group.description %><br>
+					<b>Time & Date</b><br>
+					<%= simple_format @group.time_specific %><br>
+					<b>Rules</b><br>
+					<%= simple_format @group.rules %>
+				</div>
 	</div>
-</div>
 <% end %>
 <% end %>
 

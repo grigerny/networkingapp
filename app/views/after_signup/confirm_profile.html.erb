@@ -16,8 +16,9 @@
 	Industry:<br>
 	<%= f.select :industry, [['Advertising' , 'Advertising'], ['Automotive' , 'Automotive'], ['Business Services' , 'Business Services'], ['Consulting Services' , 'Consulting Services'], ['Construction' , 'Construction'], ['Education' , 'Education'], ['Entertainment' , 'Entertainment'], ['Entrepreneur' , 'Entrepreneur'], ['Financial Services' , 'Financial Services'], ['Food & Beverages', 'Food & Beverages'], ['Government' , 'Government'], ['Healthcare' , 'Healthcare'], ['Information Technology' , 'Information Technology'], ['Insurance' , 'Insurance'],['Law' , 'Law'],['Marketing' , 'Marketing'], ['Non-Profit' , 'Non-Profit'],['Retail & Consumer Goods' , 'Retail & Consumer Goods'],['Real Estate' , 'Real Estate'],['Telecommunications' , 'Telecommunications'],['Other/Not Listed', 'Other/Not Listed']] %><br>
 	
-	Phone Number:<br>
-	<%= f.text_field :phone %><br>
+	What is your area of focus?<br>
+	<%= f.text_field :focus_area %><br>
+
 	
 <%= f.submit "Submit" %>
 <% end %>
