@@ -1,32 +1,88 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container">
+	<div class="row-fluid">
+		<div class="span4 offset4">
+
+
+<h2>Edit <%= resource_name.to_s.humanize %> Profile</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+<div class="ui form segment">
+  <div class="field">
+    <label><%= f.label :email %></label>
+    <div class="ui left labeled icon input">
+        <%= f.email_field :email, :autofocus => true, :class => "field-style" %>
+      <i class="user icon"></i>
+      <div class="ui corner label">
+        <i class="icon asterisk"></i>
+      </div>
+    </div>
+  </div>
+
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+<div class="field">
+    <label><%= f.label :password %></label>
+    <div class="ui left labeled icon input">
+      <%= f.password_field :password, :autocomplete => "off", :class => "field-style"  %><i>(leave blank if you don't want to change it)</i><br />
+      <i class="lock icon"></i>
+      <div class="ui corner label">
+        <i class="icon asterisk"></i>
+      </div>
+    </div>
+  </div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+ <div class="field">
+    <label><%= f.label :password_confirmation %></label>
+    <div class="ui left labeled icon input">
+      <%= f.password_field :password_confirmation, :class => "field-style"  %>
+      <i class="lock icon"></i>
+      <div class="ui corner label">
+        <i class="icon asterisk"></i>
+      </div>
+    </div>
+  </div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
 
-  <div><%= f.label :company %> <br />
-  <%= f.text_field :company %></div>
+<div class="field">
+    <label><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i></label>
+    <div class="ui left labeled icon input">
+      <%= f.password_field :current_password, :class => "field-style"  %>
+      <i class="lock icon"></i>
+      <div class="ui corner label">
+        <i class="icon asterisk"></i>
+      </div>
+    </div>
+  </div>
 
-<div><%= f.label :Industry %> <br />
- 		<%= f.select :industry, [['Advertising' , 'Advertising'], ['Automotive' , 'Automotive'], ['Business Services' , 'Business Services'], ['Consulting Services' , 'Consulting Services'], ['Construction' , 'Construction'], ['Education' , 'Education'], ['Entertainment' , 'Entertainment'], ['Entrepreneur' , 'Entrepreneur'], ['Financial Services' , 'Financial Services'], ['Food & Beverages', 'Food & Beverages'], ['Government' , 'Government'], ['Healthcare' , 'Healthcare'], ['Information Technology' , 'Information Technology'], ['Insurance' , 'Insurance'],['Law' , 'Law'],['Marketing' , 'Marketing'], ['Non-Profit' , 'Non-Profit'],['Retail & Consumer Goods' , 'Retail & Consumer Goods'],['Real Estate' , 'Real Estate'],['Telecommunications' , 'Telecommunications'],['Other/Not Listed', 'Other/Not Listed']] %><br>
+<div class="field">
+    <label><%= f.label :company %> </label>
+    <div class="ui left labeled icon input">
+      <%= f.password_field :company, :class => "field-style"  %>
+      <i class="briefcase icon"></i>
+      <div class="ui corner label">
+        <i class="icon asterisk"></i>
+      </div>
+    </div>
+  </div>
 
-	  <div><%= f.label :focus_area %> <br />
-	  <%= f.text_field :focus_area %></div>
+<div><%= f.label :Industry %> 
+ 		<%= f.select :industry, [['Advertising' , 'Advertising'], ['Automotive' , 'Automotive'], ['Business Services' , 'Business Services'], ['Consulting Services' , 'Consulting Services'], ['Construction' , 'Construction'], ['Education' , 'Education'], ['Entertainment' , 'Entertainment'], ['Entrepreneur' , 'Entrepreneur'], ['Financial Services' , 'Financial Services'], ['Food & Beverages', 'Food & Beverages'], ['Government' , 'Government'], ['Healthcare' , 'Healthcare'], ['Information Technology' , 'Information Technology'], ['Insurance' , 'Insurance'],['Law' , 'Law'],['Marketing' , 'Marketing'], ['Non-Profit' , 'Non-Profit'],['Retail & Consumer Goods' , 'Retail & Consumer Goods'],['Real Estate' , 'Real Estate'],['Telecommunications' , 'Telecommunications'],['Other/Not Listed', 'Other/Not Listed']], :class => "industry-css" %><br>
+
+		<div class="field">
+		    <label><%= f.label :focus_area %> </label>
+		    <div class="ui left labeled icon input">
+		      <%= f.text_field :focus_area, :class => "field-style"  %>
+		      <i class="bullseye icon"></i>
+		      <div class="ui corner label">
+		        <i class="icon asterisk"></i>
+		      </div>
+		    </div>
+		  </div>
 
   <div><%= f.submit "Update" %></div>
 <% end %>
@@ -36,3 +92,7 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
 
 <%= link_to "Back", :back %>
+
+</div>
+</div>
+</div>
